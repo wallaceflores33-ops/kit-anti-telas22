@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Método Brincar & Aprender</title>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '980953868250330');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=980953868250330&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<!-- Supermago -->
+<script src="https://supermago.b-cdn.net/supermago.js?ver=20250224" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #fff9ef;
+    --cream: #fffdf8;
+    --ink: #4a3a2e;
+    --ink-soft: #7d6b5c;
+    --yellow: #ffd23f;
+    --yellow-d: #ffb800;
+    --coral: #ff6b6b;
+    --coral-d: #ee5a5a;
+    --teal: #4ecdc4;
+    --teal-d: #2bb3aa;
+    --purple: #a78bfa;
+    --purple-d: #8b6ef0;
+    --pink: #ff9ff3;
+    --blue: #6ab7ff;
+    --green: #7bd88f;
+    --orange: #ffa45c;
+    --shadow-c: rgba(74,58,46,0.12);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Nunito', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0;
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(255,210,63,0.18) 0%, transparent 12%),
+      radial-gradient(circle at 88% 12%, rgba(78,205,196,0.16) 0%, transparent 14%),
+      radial-gradient(circle at 78% 82%, rgba(167,139,250,0.14) 0%, transparent 13%),
+      radial-gradient(circle at 18% 88%, rgba(255,107,107,0.12) 0%, transparent 12%);
+    pointer-events: none;
+  }
+
+  .display { font-family: 'Baloo 2', cursive; }
+
+  /* FLOATING DOODLES */
+  .doodle {
+    position: absolute;
+    font-size: 38px;
+    opacity: 0.85;
+    z-index: 1;
+    animation: floaty 5s ease-in-out infinite;
+    pointer-events: none;
+    user-select: none;
+  }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0) rotate(-6deg); }
+    50% { transform: translateY(-18px) rotate(6deg); }
+  }
+  @keyframes spin-slow { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+  @keyframes bounce-soft {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes pop {
+    0% { transform: scale(0.85); opacity: 0; }
+    60% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes pulse-ring {
+    0%, 100% { box-shadow: 0 8px 0 var(--coral-d), 0 0 0 0 rgba(255,107,107,0.4); }
+    50% { box-shadow: 0 8px 0 var(--coral-d), 0 0 0 14px rgba(255,107,107,0); }
+  }
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  .pop { opacity: 0; animation: pop 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+  .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.25s; }
+  .d3 { animation-delay: 0.4s; } .d4 { animation-delay: 0.55s; } .d5 { animation-delay: 0.7s; }
+
+  /* TICKER */
+  .ticker-wrap {
+    background: var(--teal);
+    overflow: hidden; padding: 12px 0;
+    position: relative; z-index: 10;
+    border-bottom: 4px solid var(--teal-d);
+  }
+  .ticker-inner { display: flex; white-space: nowrap; animation: ticker 24s linear infinite; width: max-content; }
+  .ticker-item {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: #fff; font-weight: 800; font-size: 14px;
+    letter-spacing: 0.02em; padding: 0 28px;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative; z-index: 2;
+    padding: 70px 24px 70px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero-blob {
+    position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
+    width: 120%; height: 110%; z-index: -1;
+    background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(255,210,63,0.25) 0%, transparent 60%);
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; border: 3px solid var(--yellow);
+    border-radius: 100px; padding: 8px 22px;
+    font-size: 14px; font-weight: 800; color: var(--ink);
+    box-shadow: 0 4px 0 var(--yellow-d);
+    margin-bottom: 28px;
+    font-family: 'Nunito', sans-serif;
+  }
+  .hero h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(34px, 6.5vw, 70px);
+    font-weight: 800;
+    line-height: 1.05;
+    color: var(--ink);
+    max-width: 880px; margin: 0 auto 22px;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 .hl {
+    position: relative; display: inline-block;
+    color: var(--coral-d);
+    z-index: 1;
+  }
+  .hero h1 .hl::after {
+    content: ''; position: absolute; left: -4px; right: -4px; bottom: 6px; height: 38%;
+    background: var(--yellow); z-index: -1; border-radius: 8px;
+    transform: rotate(-1.5deg);
+  }
+  .hero h1 .hl2 { color: var(--teal-d); }
+  .hero-sub {
+    font-size: clamp(17px, 2.2vw, 22px);
+    color: var(--ink-soft); font-weight: 600;
+    max-width: 620px; margin: 0 auto 38px;
+  }
+  .hero-sub b { color: var(--ink); }
+
+  /* CTA BUTTON */
+  .btn-cta {
+    display: inline-block;
+    background: var(--coral); color: #fff;
+    font-family: 'Baloo 2', cursive; font-weight: 700;
+    font-size: 19px; letter-spacing: 0.01em;
+    padding: 18px 44px; border-radius: 100px;
+    text-decoration: none; border: none; cursor: pointer;
+    box-shadow: 0 8px 0 var(--coral-d);
+    animation: pulse-ring 2s ease-in-out infinite;
+    transition: transform 0.12s ease;
+    position: relative; z-index: 1;
+  }
+  .btn-cta:hover { transform: translateY(-3px); }
+  .btn-cta:active { transform: translateY(4px); box-shadow: 0 4px 0 var(--coral-d); }
+  .btn-cta.teal { background: var(--teal); box-shadow: 0 8px 0 var(--teal-d); animation: none; }
+  .btn-cta.teal:active { box-shadow: 0 4px 0 var(--teal-d); }
+  .btn-cta.yellow { background: var(--yellow-d); color: var(--ink); box-shadow: 0 8px 0 #e0a000; animation: none; }
+  .secure-note {
+    margin-top: 16px; font-size: 14px; color: var(--ink-soft); font-weight: 700;
+    display: flex; align-items: center; gap: 8px; justify-content: center; flex-wrap: wrap;
+  }
+
+  /* PROOF STRIP */
+  .proof-strip {
+    position: relative; z-index: 2;
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    max-width: 960px; margin: 0 auto; padding: 0 24px 20px;
+  }
+  .proof-pill {
+    background: #fff; border-radius: 24px;
+    padding: 18px 26px; text-align: center;
+    border: 3px solid #fff; box-shadow: 0 6px 18px var(--shadow-c);
+    min-width: 150px;
+  }
+  .proof-pill:nth-child(1) { border-color: var(--yellow); }
+  .proof-pill:nth-child(2) { border-color: var(--teal); }
+  .proof-pill:nth-child(3) { border-color: var(--purple); }
+  .proof-pill:nth-child(4) { border-color: var(--coral); }
+  .proof-num { font-family: 'Baloo 2', cursive; font-size: 30px; font-weight: 800; color: var(--ink); line-height: 1; }
+  .proof-label { font-size: 12px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 6px; }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 2; }
+  .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  .section-pad { padding: 80px 0; }
+  .section-label {
+    display: inline-block; background: var(--purple); color: #fff;
+    font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 800;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 100px; margin-bottom: 18px;
+    box-shadow: 0 4px 0 var(--purple-d);
+  }
+  .section-label.coral { background: var(--coral); box-shadow: 0 4px 0 var(--coral-d); }
+  .section-label.teal { background: var(--teal); box-shadow: 0 4px 0 var(--teal-d); }
+  .section-label.yellow { background: var(--yellow-d); color: var(--ink); box-shadow: 0 4px 0 #e0a000; }
+  .section-title {
+    font-family: 'Baloo 2', cursive; font-weight: 800;
+    font-size: clamp(28px, 4.5vw, 46px); line-height: 1.1; color: var(--ink); margin-bottom: 18px;
+  }
+  .section-title em { font-style: normal; color: var(--coral-d); }
+  .section-title .t { color: var(--teal-d); }
+  .section-lead { color: var(--ink-soft); font-size: 18px; font-weight: 600; line-height: 1.7; margin-bottom: 8px; }
+
+  /* PAIN */
+  .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 44px 0; }
+  .pain-item {
+    background: #fff; border-radius: 22px; padding: 24px;
+    display: flex; gap: 14px; align-items: flex-start;
+    box-shadow: 0 6px 18px var(--shadow-c);
+    border: 3px solid #fff;
+    transition: transform 0.2s;
+  }
+  .pain-item:hover { transform: translateY(-5px) rotate(-1deg); border-color: var(--coral); }
+  .pain-emoji {
+    font-size: 26px; flex-shrink: 0;
+    width: 50px; height: 50px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    background: #fff4f4;
+  }
+  .pain-text strong { display: block; color: var(--ink); font-size: 16px; font-weight: 800; margin-bottom: 2px; }
+  .pain-text span { font-size: 14px; color: var(--ink-soft); font-weight: 600; }
+  .alert-box {
+    background: linear-gradient(135deg, var(--yellow), var(--orange));
+    border-radius: 24px; padding: 28px 32px;
+    font-size: 17px; color: var(--ink); font-weight: 700;
+    box-shadow: 0 8px 24px rgba(255,164,92,0.35);
+    margin-top: 36px; line-height: 1.6;
+  }
+  .alert-box b { font-weight: 800; }
+
+  /* SOLUTION / BENEFITS */
+  .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+  .benefit-card {
+    background: #fff; border-radius: 28px; padding: 34px 24px; text-align: center;
+    box-shadow: 0 8px 24px var(--shadow-c); border: 4px solid #fff;
+    transition: transform 0.25s;
+  }
+  .benefit-card:nth-child(1) { border-color: var(--coral); }
+  .benefit-card:nth-child(2) { border-color: var(--teal); }
+  .benefit-card:nth-child(3) { border-color: var(--purple); }
+  .benefit-card:hover { transform: translateY(-8px) scale(1.02); }
+  .benefit-icon {
+    width: 76px; height: 76px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 38px; margin: 0 auto 18px;
+    animation: bounce-soft 2.5s ease-in-out infinite;
+  }
+  .benefit-card:nth-child(1) .benefit-icon { background: #fff0f0; }
+  .benefit-card:nth-child(2) .benefit-icon { background: #ebfbf9; }
+  .benefit-card:nth-child(3) .benefit-icon { background: #f3effe; }
+  .benefit-title { font-family: 'Baloo 2', cursive; font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+  .benefit-desc { font-size: 14px; color: var(--ink-soft); font-weight: 600; line-height: 1.6; }
+
+  /* MODULES */
+  .modules-grid { display: flex; flex-direction: column; gap: 18px; margin-top: 44px; }
+  .module-card {
+    background: #fff; border-radius: 26px; padding: 28px 32px;
+    display: grid; grid-template-columns: 72px 1fr; gap: 22px; align-items: center;
+    box-shadow: 0 6px 20px var(--shadow-c); border: 3px solid #fff;
+    transition: transform 0.2s;
+  }
+  .module-card:hover { transform: translateX(6px); }
+  .module-card:nth-child(1) { border-left: 8px solid var(--coral); }
+  .module-card:nth-child(2) { border-left: 8px solid var(--teal); }
+  .module-card:nth-child(3) { border-left: 8px solid var(--purple); }
+  .module-num {
+    font-family: 'Baloo 2', cursive; font-size: 30px; font-weight: 800; color: #fff;
+    width: 64px; height: 64px; border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .module-card:nth-child(1) .module-num { background: var(--coral); }
+  .module-card:nth-child(2) .module-num { background: var(--teal); }
+  .module-card:nth-child(3) .module-num { background: var(--purple); }
+  .module-label { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 3px; }
+  .module-name { font-family: 'Baloo 2', cursive; font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+  .module-desc { font-size: 15px; color: var(--ink-soft); font-weight: 600; }
+
+  /* BONUS */
+  .bonus-box {
+    background: #fff; border-radius: 30px; overflow: hidden;
+    box-shadow: 0 10px 30px var(--shadow-c); border: 4px solid var(--yellow);
+    margin-top: 44px;
+  }
+  .bonus-header {
+    background: linear-gradient(135deg, var(--yellow), var(--yellow-d));
+    padding: 26px 32px; display: flex; align-items: center; gap: 16px;
+  }
+  .bonus-header-icon { font-size: 38px; animation: wiggle 2s ease-in-out infinite; }
+  .bonus-header-title { font-family: 'Baloo 2', cursive; font-size: 22px; font-weight: 800; color: var(--ink); }
+  .bonus-header-sub { font-size: 13px; color: var(--ink); font-weight: 600; opacity: 0.85; }
+  .bonus-row {
+    display: flex; align-items: center; gap: 16px; padding: 20px 32px;
+    border-bottom: 2px dashed #f0e4cf; transition: background 0.2s;
+  }
+  .bonus-row:last-child { border-bottom: none; }
+  .bonus-row:hover { background: #fffaf0; }
+  .bonus-check {
+    width: 28px; height: 28px; border-radius: 50%; background: var(--green);
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; flex-shrink: 0; font-size: 15px;
+  }
+  .bonus-name { font-size: 15px; color: var(--ink); font-weight: 700; }
+  .bonus-val { margin-left: auto; font-size: 14px; color: var(--coral-d); font-weight: 800; white-space: nowrap; }
+
+  /* TESTIMONIALS */
+  .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 44px; }
+  .testi-card {
+    background: #fff; border-radius: 26px; padding: 28px;
+    box-shadow: 0 8px 24px var(--shadow-c); border: 3px solid #fff;
+    transition: transform 0.2s;
+  }
+  .testi-card:hover { transform: translateY(-5px) rotate(1deg); }
+  .stars { font-size: 16px; margin-bottom: 14px; }
+  .testi-text { font-size: 15px; color: var(--ink); font-weight: 600; line-height: 1.7; margin-bottom: 20px; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar {
+    width: 46px; height: 46px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 18px; color: #fff; flex-shrink: 0;
+  }
+  .testi-card:nth-child(1) .testi-avatar { background: var(--coral); }
+  .testi-card:nth-child(2) .testi-avatar { background: var(--teal); }
+  .testi-card:nth-child(3) .testi-avatar { background: var(--purple); }
+  .testi-card:nth-child(4) .testi-avatar { background: var(--orange); }
+  .testi-name { font-size: 15px; font-weight: 800; color: var(--ink); }
+  .testi-loc { font-size: 13px; color: var(--ink-soft); font-weight: 600; }
+
+  /* AUTHOR */
+  .author-card {
+    background: #fff; border-radius: 32px; padding: 40px;
+    display: grid; grid-template-columns: 1fr 1.5fr; gap: 44px; align-items: center;
+    box-shadow: 0 12px 36px var(--shadow-c); margin-top: 44px;
+    border: 4px solid var(--teal);
+  }
+  .author-img-wrap { position: relative; }
+  .author-img-wrap img {
+    width: 100%; aspect-ratio: 3/4; object-fit: cover;
+    border-radius: 24px; border: 4px solid var(--yellow);
+  }
+  .author-tag {
+    position: absolute; bottom: -14px; right: -10px;
+    background: var(--coral); color: #fff; font-family: 'Baloo 2', cursive;
+    font-weight: 700; font-size: 13px; padding: 8px 18px; border-radius: 100px;
+    box-shadow: 0 5px 0 var(--coral-d);
+  }
+  .author-name { font-family: 'Baloo 2', cursive; font-size: 32px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
+  .author-title { font-size: 13px; color: var(--teal-d); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 18px; }
+  .author-bio { color: var(--ink-soft); font-weight: 600; line-height: 1.8; font-size: 16px; }
+  .author-stats { display: flex; gap: 28px; margin-top: 26px; padding-top: 24px; border-top: 2px dashed #f0e4cf; }
+  .author-stat-num { font-family: 'Baloo 2', cursive; font-size: 26px; font-weight: 800; color: var(--coral-d); }
+  .author-stat-label { font-size: 12px; color: var(--ink-soft); font-weight: 700; }
+
+  /* PRICING */
+  .price-card {
+    background: #fff; border-radius: 34px; max-width: 540px; margin: 44px auto 0;
+    overflow: hidden; box-shadow: 0 16px 44px var(--shadow-c); border: 5px solid var(--coral);
+    position: relative;
+  }
+  .price-flag {
+    position: absolute; top: 22px; right: -38px; transform: rotate(45deg);
+    background: var(--coral); color: #fff; font-weight: 800; font-size: 12px;
+    padding: 6px 44px; letter-spacing: 0.05em; z-index: 2;
+  }
+  .price-header {
+    background: linear-gradient(135deg, var(--teal), var(--blue));
+    padding: 32px; text-align: center; color: #fff;
+  }
+  .price-label { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.9; margin-bottom: 6px; }
+  .price-name { font-family: 'Baloo 2', cursive; font-size: 26px; font-weight: 800; }
+  .price-body { padding: 36px; text-align: center; }
+  .price-was { font-size: 16px; color: var(--ink-soft); font-weight: 700; text-decoration: line-through; }
+  .price-now-label { font-size: 13px; color: var(--coral-d); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
+  .price-now { font-family: 'Baloo 2', cursive; font-size: 76px; font-weight: 800; color: var(--ink); line-height: 1; margin: 6px 0 4px; }
+  .price-now span { font-size: 30px; vertical-align: top; display: inline-block; margin-top: 14px; }
+  .price-once { font-size: 14px; color: var(--ink-soft); font-weight: 700; margin-bottom: 28px; }
+  .price-features { text-align: left; margin-bottom: 26px; }
+  .price-feature {
+    display: flex; align-items: center; gap: 12px; padding: 11px 0;
+    border-bottom: 2px dashed #f3ead9; font-size: 15px; color: var(--ink); font-weight: 700;
+  }
+  .price-feature:last-child { border-bottom: none; }
+  .price-feature .pc {
+    width: 24px; height: 24px; border-radius: 50%; background: var(--green); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; flex-shrink: 0;
+  }
+  .price-countdown {
+    background: #fff4f4; border: 2px dashed var(--coral); border-radius: 18px;
+    padding: 14px; font-size: 14px; color: var(--coral-d); font-weight: 800; margin-bottom: 24px;
+  }
+
+  /* GUARANTEE */
+  .guarantee-box {
+    background: #fff; border-radius: 30px; padding: 44px;
+    display: flex; gap: 36px; align-items: center;
+    box-shadow: 0 10px 30px var(--shadow-c); border: 4px solid var(--green);
+  }
+  .guarantee-icon {
+    font-size: 60px; flex-shrink: 0;
+    width: 110px; height: 110px; border-radius: 50%; background: #effaf1;
+    display: flex; align-items: center; justify-content: center;
+    animation: bounce-soft 2.5s ease-in-out infinite;
+  }
+  .guarantee-title { font-family: 'Baloo 2', cursive; font-size: 26px; font-weight: 800; color: var(--ink); margin-bottom: 12px; }
+  .guarantee-text { color: var(--ink-soft); font-weight: 600; font-size: 16px; line-height: 1.7; }
+
+  /* FAQ */
+  .faq-list { margin-top: 44px; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { background: #fff; border-radius: 20px; box-shadow: 0 5px 16px var(--shadow-c); border: 3px solid #fff; overflow: hidden; transition: border-color 0.2s; }
+  .faq-item.open { border-color: var(--purple); }
+  .faq-q {
+    padding: 20px 26px; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+    font-size: 16px; color: var(--ink); font-weight: 800; user-select: none; font-family: 'Nunito', sans-serif;
+  }
+  .faq-icon {
+    width: 28px; height: 28px; border-radius: 50%; background: var(--purple); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
+    transition: transform 0.3s; font-weight: 800;
+  }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; font-size: 15px; color: var(--ink-soft); font-weight: 600; line-height: 1.7; padding: 0 26px; }
+  .faq-item.open .faq-a { max-height: 220px; padding: 0 26px 22px; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  /* FINAL CTA */
+  .final-cta { padding: 90px 0 100px; text-align: center; position: relative; z-index: 2; overflow: hidden; }
+  .final-cta-inner {
+    background: linear-gradient(135deg, var(--coral), var(--orange));
+    border-radius: 40px; padding: 60px 40px; max-width: 760px; margin: 0 auto;
+    box-shadow: 0 20px 50px rgba(255,107,107,0.3); position: relative; overflow: hidden;
+  }
+  .final-cta-inner h2 { font-family: 'Baloo 2', cursive; font-size: clamp(28px, 4.5vw, 44px); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 16px; }
+  .final-cta-inner p { color: #fff; font-weight: 700; font-size: 18px; margin-bottom: 32px; opacity: 0.95; }
+  .final-cta-inner .btn-cta { background: #fff; color: var(--coral-d); box-shadow: 0 8px 0 #e8d5c8; }
+  .final-cta-inner .secure-note { color: #fff; }
+
+  /* FOOTER */
+  footer { position: relative; z-index: 2; background: var(--ink); padding: 40px 24px; text-align: center; }
+  footer p { font-size: 13px; color: #c9bcae; font-weight: 600; line-height: 1.9; }
+  footer a { color: var(--yellow); text-decoration: none; font-weight: 700; }
+  footer a:hover { text-decoration: underline; }
+
+  /* RESPONSIVE */
+  @media (max-width: 720px) {
+    .pain-grid, .benefits-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .author-card { grid-template-columns: 1fr; text-align: center; }
+    .author-stats { justify-content: center; flex-wrap: wrap; gap: 18px; }
+    .guarantee-box { flex-direction: column; text-align: center; }
+    .module-card { grid-template-columns: 60px 1fr; gap: 16px; padding: 22px; }
+    .doodle { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span class="ticker-item">🌟 +12.500 famílias felizes</span>
+    <span class="ticker-item">🚀 Acesso na hora</span>
+    <span class="ticker-item">🛡️ Garantia de 7 dias</span>
+    <span class="ticker-item">🎨 Atividades superdivertidas</span>
+    <span class="ticker-item">⏱️ Resultados em 21 dias</span>
+    <span class="ticker-item">🌟 +12.500 famílias felizes</span>
+    <span class="ticker-item">🚀 Acesso na hora</span>
+    <span class="ticker-item">🛡️ Garantia de 7 dias</span>
+    <span class="ticker-item">🎨 Atividades superdivertidas</span>
+    <span class="ticker-item">⏱️ Resultados em 21 dias</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blob"></div>
+  <span class="doodle" style="top:8%;left:6%;animation-delay:0s;">✏️</span>
+  <span class="doodle" style="top:14%;right:8%;animation-delay:0.8s;">🧩</span>
+  <span class="doodle" style="top:50%;left:4%;animation-delay:1.6s;">🎨</span>
+  <span class="doodle" style="top:60%;right:5%;animation-delay:1.1s;">⭐</span>
+  <span class="doodle" style="top:30%;right:14%;animation-delay:2s;font-size:28px;">🌈</span>
+  <span class="doodle" style="top:38%;left:13%;animation-delay:0.4s;font-size:28px;">🧸</span>
+
+  <div class="hero-badge pop d1"><span>🌟</span> Já são +12.500 famílias felizes!</div>
+  <h1 class="pop d2">Diga adeus às <span class="hl">telas</span><br/>e olá para o <span class="hl hl2">brincar!</span> 🎉</h1>
+  <p class="hero-sub pop d3">Atividades lúdicas e superdivertidas que <b>aceleram o desenvolvimento</b> do seu filho enquanto acabam com o vício digital — feitas para crianças de <b>2 a 7 anos</b>.</p>
+  <a href="https://pay.kiwify.com.br/0A8Xqm4" class="btn-cta pop d4">QUERO TRANSFORMAR MEU FILHO! 🚀</a>
+  <p class="secure-note pop d5">🔒 Compra 100% Segura &nbsp;·&nbsp; ⚡ Acesso Imediato &nbsp;·&nbsp; 💳 Pagamento Único</p>
+</section>
+
+<!-- PROOF -->
+<div class="proof-strip">
+  <div class="proof-pill"><div class="proof-num">12.500+</div><div class="proof-label">Famílias felizes</div></div>
+  <div class="proof-pill"><div class="proof-num">21</div><div class="proof-label">Dias p/ resultado</div></div>
+  <div class="proof-pill"><div class="proof-num">7</div><div class="proof-label">Dias de garantia</div></div>
+  <div class="proof-pill"><div class="proof-num">⭐ 5,0</div><div class="proof-label">Avaliação das mães</div></div>
+</div>
+
+<!-- PAIN -->
+<section class="section-pad">
+  <div class="container">
+    <span class="section-label coral reveal">😔 O probleminha</span>
+    <h2 class="section-title reveal">Seu filho está <em>preso nas telas</em><br/>o dia inteiro?</h2>
+    <p class="section-lead reveal">Muitas mães se sentem culpadas. O celular virou a "babá digital" — e os sinais já estão aparecendo:</p>
+    <div class="pain-grid">
+      <div class="pain-item reveal"><div class="pain-emoji">📱</div><div class="pain-text"><strong>Vício em vídeos</strong><span>Desenhos o dia todo, sem conseguir parar.</span></div></div>
+      <div class="pain-item reveal"><div class="pain-emoji">😤</div><div class="pain-text"><strong>Birras explosivas</strong><span>Choro toda vez que você tira o celular.</span></div></div>
+      <div class="pain-item reveal"><div class="pain-emoji">🧩</div><div class="pain-text"><strong>Falta de foco</strong><span>Não segue instruções simples por muito tempo.</span></div></div>
+      <div class="pain-item reveal"><div class="pain-emoji">🗣️</div><div class="pain-text"><strong>Atraso na fala</strong><span>Menos vocabulário, menos criatividade.</span></div></div>
+    </div>
+    <div class="alert-box reveal">⏰ <b>Os primeiros 7 anos são a "janela de ouro" do cérebro!</b> Quanto mais tempo nas telas, maior o prejuízo no desenvolvimento. Mas existe uma solução simples, divertida e que funciona de verdade. 🌈</div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="section-pad" style="background:#fffbf2;">
+  <div class="container">
+    <span class="section-label teal reveal">🎨 A solução mágica</span>
+    <h2 class="section-title reveal">Brincando, seu filho<br/><span class="t">se desenvolve mais rápido!</span></h2>
+    <p class="section-lead reveal">Com atividades lúdicas e superdivertidas, seu filho reduz o tempo nas telas naturalmente — tudo em casa, com muito amor. ❤️</p>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal"><div class="benefit-icon">📵</div><div class="benefit-title">Fim do Vício</div><p class="benefit-desc">Acaba com o vício em telas de forma natural e sem traumas.</p></div>
+      <div class="benefit-card reveal"><div class="benefit-icon">🧠</div><div class="benefit-title">Super Foco</div><p class="benefit-desc">Melhora a concentração e acelera o desenvolvimento cognitivo.</p></div>
+      <div class="benefit-card reveal"><div class="benefit-icon">❤️</div><div class="benefit-title">Conexão Real</div><p class="benefit-desc">Fortalece a fala e cria momentos incríveis entre mãe e filho.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="section-pad">
+  <div class="container">
+    <span class="section-label yellow reveal">🎁 O que você recebe</span>
+    <h2 class="section-title reveal">3 Níveis de <em>aventura</em><br/>e aprendizado!</h2>
+    <p class="section-lead reveal">Um caminho divertido, feito para cada fase do seu pequeno.</p>
+    <div class="modules-grid">
+      <div class="module-card reveal"><div class="module-num">1</div><div><div class="module-label">Nível 1</div><div class="module-name">🗣️ Explosão de Vocabulário</div><div class="module-desc">Para crianças que precisam destravar a fala e a expressão de um jeito divertido.</div></div></div>
+      <div class="module-card reveal"><div class="module-num">2</div><div><div class="module-label">Nível 2</div><div class="module-name">🎯 Mestre da Concentração</div><div class="module-desc">Técnicas lúdicas para manter o foco em tarefas simples e prazerosas.</div></div></div>
+      <div class="module-card reveal"><div class="module-num">3</div><div><div class="module-label">Nível 3</div><div class="module-name">🔤 Pré-Alfabetização Ativa</div><div class="module-desc">O passo a passo para letras e números sem pressão, só com brincadeiras.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS -->
+<section class="section-pad" style="background:#fffbf2;">
+  <div class="container">
+    <span class="section-label coral reveal">🎉 Bônus exclusivos</span>
+    <h2 class="section-title reveal">E ainda tem <em>presentes</em> pra você!</h2>
+    <div class="bonus-box reveal">
+      <div class="bonus-header">
+        <div class="bonus-header-icon">🎁</div>
+        <div><div class="bonus-header-title">Super Pack de Bônus</div><div class="bonus-header-sub">8 bônus + comunidade VIP + acesso vitalício</div></div>
+      </div>
+      <div class="bonus-row"><div class="bonus-check">✓</div><div class="bonus-name">8 Bônus Exclusivos de Desenvolvimento Infantil</div><div class="bonus-val">R$ 97,00</div></div>
+      <div class="bonus-row"><div class="bonus-check">✓</div><div class="bonus-name">Comunidade VIP de Mães — apoio total 💬</div><div class="bonus-val">Grátis</div></div>
+      <div class="bonus-row"><div class="bonus-check">✓</div><div class="bonus-name">Acesso Vitalício — use quando quiser ♾️</div><div class="bonus-val">Incluso</div></div>
+      <div class="bonus-row" style="background:#fffaf0;"><div class="bonus-check" style="background:var(--yellow-d);">★</div><div class="bonus-name" style="color:var(--coral-d);font-weight:800;">Valor total dos bônus</div><div class="bonus-val">R$ 97,00</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section-pad">
+  <div class="container">
+    <span class="section-label purple reveal" style="background:var(--purple);box-shadow:0 4px 0 var(--purple-d);">💛 Depoimentos</span>
+    <h2 class="section-title reveal">Mães que <em>amaram</em> a transformação!</h2>
+    <div class="testimonials-grid">
+      <div class="testi-card reveal"><div class="stars">⭐⭐⭐⭐⭐</div><p class="testi-text">Meu filho de 4 anos não largava o celular. Em 2 semanas ele já pede pra desenhar e brincar! Melhor investimento que fiz.</p><div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Carla S.</div><div class="testi-loc">São Paulo, SP</div></div></div></div>
+      <div class="testi-card reveal"><div class="stars">⭐⭐⭐⭐⭐</div><p class="testi-text">As atividades são tão simples que consigo fazer mesmo cansada do trabalho. A conexão com minha filha ficou maravilhosa!</p><div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Marta F.</div><div class="testi-loc">Rio de Janeiro, RJ</div></div></div></div>
+      <div class="testi-card reveal"><div class="stars">⭐⭐⭐⭐⭐</div><p class="testi-text">Estava preocupada com o atraso na fala. O Nível 1 ajudou demais! Ele já forma frases completas em 3 semanas.</p><div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sandra R.</div><div class="testi-loc">Belo Horizonte, MG</div></div></div></div>
+      <div class="testi-card reveal"><div class="stars">⭐⭐⭐⭐⭐</div><p class="testi-text">Finalmente um material de qualidade em português do Brasil! Recomendo pra todas as mães. Nota 10! 🥰</p><div class="testi-author"><div class="testi-avatar">P</div><div><div class="testi-name">Patrícia M.</div><div class="testi-loc">Curitiba, PR</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section class="section-pad" style="background:#fffbf2;">
+  <div class="container">
+    <span class="section-label teal reveal">👋 Quem vai te guiar</span>
+    <div class="author-card reveal">
+      <div class="author-img-wrap">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop" alt="Professora Ana Silva"/>
+        <div class="author-tag">+12 anos 🎓</div>
+      </div>
+      <div>
+        <div class="author-name">Professora Ana Silva 💕</div>
+        <div class="author-title">Especialista em Psicopedagogia</div>
+        <p class="author-bio">Com mais de 12 anos de experiência na educação infantil, já ajudei milhares de famílias no Brasil a redescobrirem o prazer de educar brincando.<br/><br/>Meu objetivo é ajudar você a criar uma criança mais focada, comunicativa e feliz — sem depender de telas! 🌈</p>
+        <div class="author-stats">
+          <div><div class="author-stat-num">12.500+</div><div class="author-stat-label">Famílias atendidas</div></div>
+          <div><div class="author-stat-num">12 anos</div><div class="author-stat-label">De experiência</div></div>
+          <div><div class="author-stat-num">⭐ 5,0</div><div class="author-stat-label">Avaliação</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section-pad" id="preço">
+  <div class="container" style="text-align:center;">
+    <span class="section-label coral reveal" style="margin:0 auto 18px;">⏰ Oferta de lançamento</span>
+    <h2 class="section-title reveal">Comece a <em>transformação</em> hoje!</h2>
+    <p class="section-lead reveal">O preço sobe em breve — aproveite agora! 🎈</p>
+    <div class="price-card reveal">
+      <div class="price-flag">SÓ HOJE</div>
+      <div class="price-header">
+        <div class="price-label">Método Brincar & Aprender</div>
+        <div class="price-name">Acesso Completo + 8 Bônus 🎁</div>
+      </div>
+      <div class="price-body">
+        <div class="price-was">De R$ 47,00</div>
+        <div class="price-now-label">Por apenas</div>
+        <div class="price-now"><span>R$</span>9<span>,90</span></div>
+        <div class="price-once">Pagamento único • Acesso imediato e vitalício</div>
+        <div class="price-features">
+          <div class="price-feature"><span class="pc">✓</span>3 Níveis de Desenvolvimento Completos</div>
+          <div class="price-feature"><span class="pc">✓</span>8 Bônus Exclusivos (valor R$ 97)</div>
+          <div class="price-feature"><span class="pc">✓</span>Comunidade VIP de Mães 💬</div>
+          <div class="price-feature"><span class="pc">✓</span>Acesso Vitalício — use quando quiser ♾️</div>
+          <div class="price-feature"><span class="pc">✓</span>Funciona em casa, sem pressão 🏡</div>
+        </div>
+        <div class="price-countdown">🔥 Oferta especial — o preço pode subir a qualquer momento!</div>
+        <a href="https://pay.kiwify.com.br/0A8Xqm4" class="btn-cta" style="display:block;width:100%;">QUERO TRANSFORMAR MEU FILHO! ✅</a>
+        <p class="secure-note" style="margin-top:16px;">🔒 Pagamento 100% Seguro e Encriptado</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="section-pad" style="background:#fffbf2;">
+  <div class="container">
+    <div class="guarantee-box reveal">
+      <div class="guarantee-icon">🛡️</div>
+      <div>
+        <div class="guarantee-title">Garantia Total de 7 Dias! 💚</div>
+        <p class="guarantee-text">Se por qualquer motivo você não amar o material, é só pedir seu dinheiro de volta em até 7 dias. Sem pergunta, sem burocracia. Seu investimento está 100% protegido — você só tem a ganhar!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-pad">
+  <div class="container">
+    <span class="section-label purple reveal" style="background:var(--purple);box-shadow:0 4px 0 var(--purple-d);">❓ Dúvidas</span>
+    <h2 class="section-title reveal">Perguntas <em>frequentes</em></h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Quanto tempo demora pra ver resultado?<span class="faq-icon">+</span></div><div class="faq-a">A maioria das mães relata mudanças já na primeira semana! O método foi feito para resultados progressivos em até 21 dias.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Preciso imprimir tudo?<span class="faq-icon">+</span></div><div class="faq-a">Não! Muitas atividades podem ser feitas direto no celular ou tablet. Para quem tem impressora, a experiência fica ainda mais rica.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Funciona para criança de 2 anos?<span class="faq-icon">+</span></div><div class="faq-a">Sim! O método é feito especialmente para crianças de 2 a 7 anos, respeitando cada fase do desenvolvimento.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">É só para quem tem impressora?<span class="faq-icon">+</span></div><div class="faq-a">Não! As atividades podem ser aplicadas de várias formas. A impressora é totalmente opcional.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Posso usar com filho de 6-7 anos?<span class="faq-icon">+</span></div><div class="faq-a">Perfeitamente! O Nível 3 é ideal para essa faixa e tem gerado resultados incríveis.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Como recebo o acesso?<span class="faq-icon">+</span></div><div class="faq-a">Logo após a confirmação do pagamento, você recebe tudo por e-mail. Rápido, simples e seguro! 📩</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <div class="final-cta-inner">
+      <span class="doodle" style="top:10%;left:8%;font-size:30px;">⭐</span>
+      <span class="doodle" style="top:14%;right:10%;font-size:30px;animation-delay:1s;">🎈</span>
+      <span class="doodle" style="bottom:12%;left:12%;font-size:26px;animation-delay:0.6s;">🌈</span>
+      <h2>Pronta para acabar com<br/>o vício em telas? 🎉</h2>
+      <p>Garanta agora por apenas <b>R$ 9,90</b> e comece a transformação ainda hoje!</p>
+      <a href="https://pay.kiwify.com.br/0A8Xqm4" class="btn-cta">QUERO TRANSFORMAR MEU FILHO! 🎯</a>
+      <p class="secure-note" style="margin-top:18px;">⚡ Acesso Imediato &nbsp;·&nbsp; 🛡️ 7 Dias de Garantia &nbsp;·&nbsp; 💳 Pagamento Único</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2024 Método Brincar & Aprender. Todos os direitos reservados.<br/>
+  <a href="#">Termos de Uso</a> &nbsp;·&nbsp; <a href="#">Privacidade</a> &nbsp;·&nbsp; <a href="#">Contato</a></p>
+  <p style="margin-top:16px;font-size:12px;max-width:640px;margin-left:auto;margin-right:auto;">Este site não faz parte do Facebook ou Facebook Inc. Este site NÃO é endossado pelo Facebook de nenhuma maneira. FACEBOOK é uma marca comercial da META, Inc.</p>
+</footer>
+
+<script>
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0) scale(1)';
+        e.target.style.transition = 'opacity 0.6s cubic-bezier(0.34,1.56,0.64,1), transform 0.6s cubic-bezier(0.34,1.56,0.64,1)';
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px) scale(0.97)';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

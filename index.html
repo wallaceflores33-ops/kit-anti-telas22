@@ -56,34 +56,23 @@ src="https://www.facebook.com/tr?id=980953868250330&ev=PageView&noscript=1"
     line-height: 1.7;
     overflow-x: hidden;
   }
-  body::before {
-    content: '';
-    position: fixed; inset: 0; z-index: 0;
-    background-image:
-      radial-gradient(circle at 12% 18%, rgba(255,210,63,0.18) 0%, transparent 12%),
-      radial-gradient(circle at 88% 12%, rgba(78,205,196,0.16) 0%, transparent 14%),
-      radial-gradient(circle at 78% 82%, rgba(167,139,250,0.14) 0%, transparent 13%),
-      radial-gradient(circle at 18% 88%, rgba(255,107,107,0.12) 0%, transparent 12%);
-    pointer-events: none;
-  }
 
   .display { font-family: 'Baloo 2', cursive; }
 
-  /* FLOATING DOODLES */
+  /* DOODLES (decorative only, sit BEHIND content) */
   .doodle {
     position: absolute;
-    font-size: 38px;
-    opacity: 0.85;
-    z-index: 1;
-    animation: floaty 5s ease-in-out infinite;
+    font-size: 34px;
+    opacity: 0.6;
+    z-index: 0;
+    animation: floaty 6s ease-in-out infinite;
     pointer-events: none;
     user-select: none;
   }
   @keyframes floaty {
     0%, 100% { transform: translateY(0) rotate(-6deg); }
-    50% { transform: translateY(-18px) rotate(6deg); }
+    50% { transform: translateY(-14px) rotate(6deg); }
   }
-  @keyframes spin-slow { from { transform: rotate(0); } to { transform: rotate(360deg); } }
   @keyframes wiggle {
     0%, 100% { transform: rotate(-3deg); }
     50% { transform: rotate(3deg); }
@@ -124,16 +113,13 @@ src="https://www.facebook.com/tr?id=980953868250330&ev=PageView&noscript=1"
 
   /* HERO */
   .hero {
-    position: relative; z-index: 2;
-    padding: 70px 24px 70px;
+    position: relative;
+    padding: 70px 24px;
     text-align: center;
     overflow: hidden;
+    background: radial-gradient(ellipse 70% 55% at 50% 25%, rgba(255,210,63,0.22) 0%, transparent 62%);
   }
-  .hero-blob {
-    position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
-    width: 120%; height: 110%; z-index: -1;
-    background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(255,210,63,0.25) 0%, transparent 60%);
-  }
+  .hero-content { position: relative; z-index: 2; }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
     background: #fff; border: 3px solid var(--yellow);
@@ -145,20 +131,19 @@ src="https://www.facebook.com/tr?id=980953868250330&ev=PageView&noscript=1"
   }
   .hero h1 {
     font-family: 'Baloo 2', cursive;
-    font-size: clamp(34px, 6.5vw, 70px);
+    font-size: clamp(34px, 6.5vw, 68px);
     font-weight: 800;
-    line-height: 1.05;
+    line-height: 1.08;
     color: var(--ink);
     max-width: 880px; margin: 0 auto 22px;
     letter-spacing: -0.01em;
   }
   .hero h1 .hl {
     position: relative; display: inline-block;
-    color: var(--coral-d);
-    z-index: 1;
+    color: var(--coral-d); z-index: 1;
   }
   .hero h1 .hl::after {
-    content: ''; position: absolute; left: -4px; right: -4px; bottom: 6px; height: 38%;
+    content: ''; position: absolute; left: -4px; right: -4px; bottom: 6px; height: 36%;
     background: var(--yellow); z-index: -1; border-radius: 8px;
     transform: rotate(-1.5deg);
   }
@@ -185,9 +170,6 @@ src="https://www.facebook.com/tr?id=980953868250330&ev=PageView&noscript=1"
   }
   .btn-cta:hover { transform: translateY(-3px); }
   .btn-cta:active { transform: translateY(4px); box-shadow: 0 4px 0 var(--coral-d); }
-  .btn-cta.teal { background: var(--teal); box-shadow: 0 8px 0 var(--teal-d); animation: none; }
-  .btn-cta.teal:active { box-shadow: 0 4px 0 var(--teal-d); }
-  .btn-cta.yellow { background: var(--yellow-d); color: var(--ink); box-shadow: 0 8px 0 #e0a000; animation: none; }
   .secure-note {
     margin-top: 16px; font-size: 14px; color: var(--ink-soft); font-weight: 700;
     display: flex; align-items: center; gap: 8px; justify-content: center; flex-wrap: wrap;
@@ -241,7 +223,7 @@ src="https://www.facebook.com/tr?id=980953868250330&ev=PageView&noscript=1"
     display: flex; gap: 14px; align-items: flex-start;
     box-shadow: 0 6px 18px var(--shadow-c);
     border: 3px solid #fff;
-    transition: transform 0.2s;
+    transition: transform 0.2s, border-color 0.2s;
   }
   .pain-item:hover { transform: translateY(-5px) rotate(-1deg); border-color: var(--coral); }
   .pain-emoji {
@@ -454,16 +436,16 @@ src="https://www.facebook.com/tr?id=980953868250330&ev=PageView&noscript=1"
   .faq-item.open .faq-icon { transform: rotate(45deg); }
 
   /* FINAL CTA */
-  .final-cta { padding: 90px 0 100px; text-align: center; position: relative; z-index: 2; overflow: hidden; }
+  .final-cta { padding: 90px 0 100px; text-align: center; position: relative; z-index: 2; }
   .final-cta-inner {
     background: linear-gradient(135deg, var(--coral), var(--orange));
     border-radius: 40px; padding: 60px 40px; max-width: 760px; margin: 0 auto;
     box-shadow: 0 20px 50px rgba(255,107,107,0.3); position: relative; overflow: hidden;
   }
-  .final-cta-inner h2 { font-family: 'Baloo 2', cursive; font-size: clamp(28px, 4.5vw, 44px); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 16px; }
-  .final-cta-inner p { color: #fff; font-weight: 700; font-size: 18px; margin-bottom: 32px; opacity: 0.95; }
-  .final-cta-inner .btn-cta { background: #fff; color: var(--coral-d); box-shadow: 0 8px 0 #e8d5c8; }
-  .final-cta-inner .secure-note { color: #fff; }
+  .final-cta-inner h2 { font-family: 'Baloo 2', cursive; font-size: clamp(28px, 4.5vw, 44px); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 16px; position: relative; z-index: 2; }
+  .final-cta-inner p { color: #fff; font-weight: 700; font-size: 18px; margin-bottom: 32px; opacity: 0.95; position: relative; z-index: 2; }
+  .final-cta-inner .btn-cta { background: #fff; color: var(--coral-d); box-shadow: 0 8px 0 #e8d5c8; position: relative; z-index: 2; }
+  .final-cta-inner .secure-note { color: #fff; position: relative; z-index: 2; }
 
   /* FOOTER */
   footer { position: relative; z-index: 2; background: var(--ink); padding: 40px 24px; text-align: center; }
@@ -478,7 +460,7 @@ src="https://www.facebook.com/tr?id=980953868250330&ev=PageView&noscript=1"
     .author-stats { justify-content: center; flex-wrap: wrap; gap: 18px; }
     .guarantee-box { flex-direction: column; text-align: center; }
     .module-card { grid-template-columns: 60px 1fr; gap: 16px; padding: 22px; }
-    .doodle { font-size: 28px; }
+    .doodle { display: none; }
   }
 </style>
 </head>
@@ -502,19 +484,18 @@ src="https://www.facebook.com/tr?id=980953868250330&ev=PageView&noscript=1"
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-blob"></div>
-  <span class="doodle" style="top:8%;left:6%;animation-delay:0s;">✏️</span>
-  <span class="doodle" style="top:14%;right:8%;animation-delay:0.8s;">🧩</span>
-  <span class="doodle" style="top:50%;left:4%;animation-delay:1.6s;">🎨</span>
-  <span class="doodle" style="top:60%;right:5%;animation-delay:1.1s;">⭐</span>
-  <span class="doodle" style="top:30%;right:14%;animation-delay:2s;font-size:28px;">🌈</span>
-  <span class="doodle" style="top:38%;left:13%;animation-delay:0.4s;font-size:28px;">🧸</span>
+  <span class="doodle" style="top:6%;left:3%;animation-delay:0s;">✏️</span>
+  <span class="doodle" style="top:10%;right:4%;animation-delay:0.8s;">🧩</span>
+  <span class="doodle" style="bottom:14%;left:5%;animation-delay:1.6s;">🎨</span>
+  <span class="doodle" style="bottom:18%;right:4%;animation-delay:1.1s;">⭐</span>
 
-  <div class="hero-badge pop d1"><span>🌟</span> Já são +12.500 famílias felizes!</div>
-  <h1 class="pop d2">Diga adeus às <span class="hl">telas</span><br/>e olá para o <span class="hl hl2">brincar!</span> 🎉</h1>
-  <p class="hero-sub pop d3">Atividades lúdicas e superdivertidas que <b>aceleram o desenvolvimento</b> do seu filho enquanto acabam com o vício digital — feitas para crianças de <b>2 a 7 anos</b>.</p>
-  <a href="https://pay.kiwify.com.br/0A8Xqm4" class="btn-cta pop d4">QUERO TRANSFORMAR MEU FILHO! 🚀</a>
-  <p class="secure-note pop d5">🔒 Compra 100% Segura &nbsp;·&nbsp; ⚡ Acesso Imediato &nbsp;·&nbsp; 💳 Pagamento Único</p>
+  <div class="hero-content">
+    <div class="hero-badge pop d1"><span>🌟</span> Já são +12.500 famílias felizes!</div>
+    <h1 class="pop d2">Diga adeus às <span class="hl">telas</span><br/>e olá para o <span class="hl hl2">brincar!</span> 🎉</h1>
+    <p class="hero-sub pop d3">Atividades lúdicas e superdivertidas que <b>aceleram o desenvolvimento</b> do seu filho enquanto acabam com o vício digital — feitas para crianças de <b>2 a 7 anos</b>.</p>
+    <a href="https://pay.kiwify.com.br/0A8Xqm4" class="btn-cta pop d4">QUERO TRANSFORMAR MEU FILHO! 🚀</a>
+    <p class="secure-note pop d5">🔒 Compra 100% Segura &nbsp;·&nbsp; ⚡ Acesso Imediato &nbsp;·&nbsp; 💳 Pagamento Único</p>
+  </div>
 </section>
 
 <!-- PROOF -->
@@ -590,7 +571,7 @@ src="https://www.facebook.com/tr?id=980953868250330&ev=PageView&noscript=1"
 <!-- TESTIMONIALS -->
 <section class="section-pad">
   <div class="container">
-    <span class="section-label purple reveal" style="background:var(--purple);box-shadow:0 4px 0 var(--purple-d);">💛 Depoimentos</span>
+    <span class="section-label reveal" style="background:var(--purple);box-shadow:0 4px 0 var(--purple-d);">💛 Depoimentos</span>
     <h2 class="section-title reveal">Mães que <em>amaram</em> a transformação!</h2>
     <div class="testimonials-grid">
       <div class="testi-card reveal"><div class="stars">⭐⭐⭐⭐⭐</div><p class="testi-text">Meu filho de 4 anos não largava o celular. Em 2 semanas ele já pede pra desenhar e brincar! Melhor investimento que fiz.</p><div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Carla S.</div><div class="testi-loc">São Paulo, SP</div></div></div></div>
@@ -672,7 +653,7 @@ src="https://www.facebook.com/tr?id=980953868250330&ev=PageView&noscript=1"
 <!-- FAQ -->
 <section class="section-pad">
   <div class="container">
-    <span class="section-label purple reveal" style="background:var(--purple);box-shadow:0 4px 0 var(--purple-d);">❓ Dúvidas</span>
+    <span class="section-label reveal" style="background:var(--purple);box-shadow:0 4px 0 var(--purple-d);">❓ Dúvidas</span>
     <h2 class="section-title reveal">Perguntas <em>frequentes</em></h2>
     <div class="faq-list">
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Quanto tempo demora pra ver resultado?<span class="faq-icon">+</span></div><div class="faq-a">A maioria das mães relata mudanças já na primeira semana! O método foi feito para resultados progressivos em até 21 dias.</div></div>
@@ -689,9 +670,9 @@ src="https://www.facebook.com/tr?id=980953868250330&ev=PageView&noscript=1"
 <section class="final-cta">
   <div class="container">
     <div class="final-cta-inner">
-      <span class="doodle" style="top:10%;left:8%;font-size:30px;">⭐</span>
-      <span class="doodle" style="top:14%;right:10%;font-size:30px;animation-delay:1s;">🎈</span>
-      <span class="doodle" style="bottom:12%;left:12%;font-size:26px;animation-delay:0.6s;">🌈</span>
+      <span class="doodle" style="top:8%;left:6%;font-size:28px;opacity:0.5;">⭐</span>
+      <span class="doodle" style="top:12%;right:8%;font-size:28px;opacity:0.5;animation-delay:1s;">🎈</span>
+      <span class="doodle" style="bottom:10%;left:10%;font-size:24px;opacity:0.5;animation-delay:0.6s;">🌈</span>
       <h2>Pronta para acabar com<br/>o vício em telas? 🎉</h2>
       <p>Garanta agora por apenas <b>R$ 9,90</b> e comece a transformação ainda hoje!</p>
       <a href="https://pay.kiwify.com.br/0A8Xqm4" class="btn-cta">QUERO TRANSFORMAR MEU FILHO! 🎯</a>
